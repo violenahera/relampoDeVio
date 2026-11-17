@@ -19,11 +19,18 @@ http_defaults:
 scenarios:
   - name: Recorded Scenario
     load:
-      type: constant
+      type: ramp
       duration: 2m
-      ramp_up: 15s
-      users: '10'
       iterations: '1'
+      start_users: '1'
+      end_users: '100'
+    x-studio-load-profiles:
+      constant:
+        type: constant
+        duration: 2m
+        ramp_up: 15s
+        users: '10'
+        iterations: '1'
     cookies:
       mode: auto
     steps:
